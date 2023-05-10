@@ -1,4 +1,4 @@
-from logger import logging
+from src.logger import logging
 import sys
 
 def errorMSG(error,error_detail:sys):
@@ -20,11 +20,11 @@ class CustomException(Exception):
         return self.error_msg
     
 
-if __name__ == "__main__":
-    try:
-        a = 1/0
-    except Exception as e:
-        logging.info("ZERO Division error")
-        raise CustomException(error_msg=e,error_detail=sys)
-        # raise CustomException(e,sys)
+# if __name__ == "__main__":
+#     try:
+#         a = 1/0
+#     except Exception as e:
+#         logging.info("ZERO Division error")
+#         raise CustomException(error_msg=e,error_detail=sys)
+#         # raise CustomException(e,sys)
     
