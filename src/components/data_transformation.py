@@ -7,6 +7,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 
 from components.data_classes import DataTransformationConfig
+from components.utils import save_object
 from exception import CustomException
 from src.logger import logging
 import numpy as np
@@ -88,11 +89,17 @@ class DataTransformation:
                 input_feature_test_arr, np.array(target_feature_test_df)
                 ] # np.c_ this concatenate like np.concat function but its axis is by default '1'
 
-            logging.info(f"Saved preprocessing object.")
+            logging.info(f"Saving preprocessing object.")
 
+            save_object(
+                file_path= self.data_transformation_config.preprocessorObFilePath
+                obj=preprocessor_obj
+                )
             
-        except:
-            pass
+            
+            
+        except Exception as e:
+            raise CustomException(e,sys)
 
 
     

@@ -49,3 +49,7 @@ class DataCollection:
 if __name__ == '__main__':
     obj = DataCollection()
     obj.initiate_data_collection()
+
+
+
+    
