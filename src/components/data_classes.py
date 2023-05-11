@@ -1,5 +1,3 @@
-
-
 from dataclasses import dataclass
 import os
 
@@ -15,5 +13,10 @@ class DataCollectionConfig:
 @dataclass
 class DataTransformationConfig:
     preprocessorObFilePath = os.path.join('warehouse','preprocessor.pkl')
+
+
+@dataclass
+class ModelTrainerConfig:
+    ModelObjFilePath = os.path.join('warehouse','model.pkl')
 
     
