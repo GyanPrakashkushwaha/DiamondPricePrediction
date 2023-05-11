@@ -6,9 +6,9 @@ from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 
-from components.data_classes import DataTransformationConfig
-from components.utils import save_object
-from exception import CustomException
+from src.components.data_classes import DataTransformationConfig
+from src.components.utils import save_object
+from src.exception import CustomException
 from src.logger import logging
 import numpy as np
 
@@ -68,7 +68,7 @@ class DataTransformation:
             preprocessor_obj = self.get_data_transformation_object()
 
 
-            target_col_name = ['price']
+            target_col_name = 'price'
             input_feature_train_df = train_df.drop(columns=[target_col_name], axis=1)
             target_feature_train_df = train_df[target_col_name]
 
@@ -92,11 +92,16 @@ class DataTransformation:
             logging.info(f"Saving preprocessing object.")
 
             save_object(
-                file_path= self.data_transformation_config.preprocessorObFilePath
+                file_path= self.data_transformation_config.preprocessorObFilePath,
                 obj=preprocessor_obj
                 )
             
-            
+            return(
+                train_arr,
+                test_arr,
+                self.data_transformation_config.preprocessorObFilePath
+            )
+
             
         except Exception as e:
             raise CustomException(e,sys)

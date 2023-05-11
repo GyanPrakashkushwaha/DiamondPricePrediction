@@ -1,6 +1,0 @@
-setup.py
-AvilaProject.egg-info/PKG-INFO
-AvilaProject.egg-info/SOURCES.txt
-AvilaProject.egg-info/dependency_links.txt
-AvilaProject.egg-info/requires.txt
-AvilaProject.egg-info/top_level.txt

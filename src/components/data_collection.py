@@ -5,7 +5,7 @@ from src.components.data_classes import DataCollectionConfig
 from src.logger import logging
 import os
 from sklearn.model_selection import train_test_split
-
+from src.components.data_transformation import DataTransformation
 
 class DataCollection:
     def __init__(self):
@@ -48,7 +48,10 @@ class DataCollection:
 
 if __name__ == '__main__':
     obj = DataCollection()
-    obj.initiate_data_collection()
+    traindata , testdata = obj.initiate_data_collection()
+
+    obj2 = DataTransformation()
+    obj2.initiate_data_transformation(train_data_path_transformation=traindata,test_data_path_transformation=testdata)
 
 
 

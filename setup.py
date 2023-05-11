@@ -18,7 +18,7 @@ def get_requirements(file_path:str)-> List[str]:
 
 
 setup(
-    name='AvilaProject',
+    name='DiamondPricePredictionProject',
     version='0.0.1',
     author='GyanPrakashKushwaha',
     author_email='gyanp7880@gmail.com',
