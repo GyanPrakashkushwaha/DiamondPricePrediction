@@ -12,3 +12,8 @@ class DataCollectionConfig:
     test_data_path : str = os.path.join('warehouse','testData.csv')
 
 
+@dataclass
+class DataTransformationConfig:
+    preprocessorObFilePath = os.path.join('warehouse','preprocessor.pkl')
+
+    
