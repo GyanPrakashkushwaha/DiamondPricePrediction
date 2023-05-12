@@ -25,7 +25,7 @@ def save_object(file_path, obj):
 
 
 
-def evaluate_models(X_train,y_train,X_test,y_test,models,param=None) -> dict:
+def evaluate_models(X_train,y_train,X_test,y_test,models) -> dict:
 
     try:
         report = {}

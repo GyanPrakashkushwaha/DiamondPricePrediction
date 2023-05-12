@@ -7,7 +7,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 
 from src.components.data_classes import DataTransformationConfig
-from utils import save_object
+from src.utils import save_object
 from src.exception import CustomException
 from src.logger import logging
 import numpy as np

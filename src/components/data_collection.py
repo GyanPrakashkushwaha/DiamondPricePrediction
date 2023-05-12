@@ -6,6 +6,7 @@ from src.logger import logging
 import os
 from sklearn.model_selection import train_test_split
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import TrainModel
 
 class DataCollection:
     def __init__(self):
@@ -47,12 +48,18 @@ class DataCollection:
 
 
 if __name__ == '__main__':
-    obj = DataCollection()
-    traindata , testdata = obj.initiate_data_collection()
+    try:
+        obj = DataCollection()
+        traindata , testdata = obj.initiate_data_collection()
 
-    obj2 = DataTransformation()
-    obj2.initiate_data_transformation(train_data_path_transformation=traindata,test_data_path_transformation=testdata)
-
+        obj2 = DataTransformation()
+        train_array , test_array,_ = obj2.initiate_data_transformation(train_data_path_transformation=traindata,test_data_path_transformation=testdata)
+        
+        obj3 = TrainModel()
+        obj3.initiate_model_trainer(train_arr=train_array,test_arr=test_array)
+        
+    except Exception as e:
+        raise CustomException(e,sys)
 
 
     
