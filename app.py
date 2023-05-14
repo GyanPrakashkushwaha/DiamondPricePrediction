@@ -1,5 +1,5 @@
 from flask import Flask,request,render_template,jsonify
-from src.pipeline.predict_pipeline import CustomData,PredictPipeline
+from src.pipeline.predict_pipeline import CustomData,PredictionPipeline
 
 
 application=Flask(__name__)
@@ -10,7 +10,7 @@ app=application
 def home_page():
     return render_template('index.html')
 
-@app.route('/predict',methods=['GET','POST'])
+@app.route('/predictdata',methods=['GET','POST'])
 
 def predict_datapoint():
     if request.method=='GET':
@@ -29,7 +29,7 @@ def predict_datapoint():
             clarity = request.form.get('clarity')
         )
         final_new_data=data.get_data_as_dataframe()
-        predict_pipeline=PredictPipeline()
+        predict_pipeline=PredictionPipeline()
         pred=predict_pipeline.predict(final_new_data)
 
         results=round(pred[0],2)

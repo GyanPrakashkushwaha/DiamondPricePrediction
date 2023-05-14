@@ -13,7 +13,9 @@ class PredictionPipeline:
             preprocessor_file_path = 'warehouse\preprocessor.pkl'
 
             model = load_object(file_path=model_file_path)
-            encoded_data = load_object(file_path=preprocessor_file_path)
+            preprocessor = load_object(file_path=preprocessor_file_path)
+
+            encoded_data = preprocessor.transform(features)
 
             pred = model.predict(encoded_data)
 

@@ -2,7 +2,7 @@ import sys
 import pandas as pd
 import os
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
+from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler , LabelEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 
@@ -45,7 +45,7 @@ class DataTransformation:
                 ]), ['clarity']),
                 ('color_col_pipeline', Pipeline(steps=[
                     ('imputer', SimpleImputer(strategy='most_frequent')),
-                    ('ohe', OneHotEncoder())
+                    ('lableEncoder', OrdinalEncoder())
                 ]), ['color'])
                 ]
                 )
