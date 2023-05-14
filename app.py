@@ -1,21 +1,17 @@
-from flask import Flask,request,render_template
-import numpy as np
-import pandas as pd
+from flask import Flask,request,render_template,jsonify
+from src.pipeline.predict_pipeline import CustomData,PredictPipeline
 
-from sklearn.preprocessing import StandardScaler
-from src.pipeline.predict import CustomData,PredictionPipeline
 
 application=Flask(__name__)
 
 app=application
 
-## Route for a home page
-
 @app.route('/')
-def index():
-    return render_template('index.html') 
+def home_page():
+    return render_template('index.html')
 
-@app.route('/predictdata',methods=['GET','POST'])
+@app.route('/predict',methods=['GET','POST'])
+
 def predict_datapoint():
     if request.method=='GET':
         return render_template('form.html')
@@ -23,19 +19,17 @@ def predict_datapoint():
     else:
         data=CustomData(
             carat=float(request.form.get('carat')),
-            cut = request.form.get('cut'),
-            color= request.form.get('color'),
-            clarity= request.form.get('clarity')
             depth = float(request.form.get('depth')),
             table = float(request.form.get('table')),
             x = float(request.form.get('x')),
             y = float(request.form.get('y')),
             z = float(request.form.get('z')),
-
+            cut = request.form.get('cut'),
+            color= request.form.get('color'),
             clarity = request.form.get('clarity')
         )
         final_new_data=data.get_data_as_dataframe()
-        predict_pipeline=PredictionPipeline()
+        predict_pipeline=PredictPipeline()
         pred=predict_pipeline.predict(final_new_data)
 
         results=round(pred[0],2)
