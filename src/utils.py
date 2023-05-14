@@ -8,6 +8,7 @@ import pandas as pd
 import pickle
 from sklearn.metrics import r2_score
 from sklearn.model_selection import GridSearchCV
+from src.logger import logging
 
 
 def save_object(file_path, obj):
@@ -45,6 +46,9 @@ def evaluate_models(X_train,y_train,X_test,y_test,models) -> dict:
 
             report[list(models.keys())[i]] = test_model_score
 
+            logging.info('utils executed')
+            
+
         return report
     except Exception as e:
         raise CustomException(e,sys)
@@ -58,3 +62,6 @@ def load_object(file_path):
             return dill.load(file_obj)
     except Exception as e:
         raise CustomException(e,sys)
+    
+if __name__=='__main__':
+    logging.info('hello')
