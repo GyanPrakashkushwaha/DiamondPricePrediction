@@ -6,7 +6,6 @@ def errorMSG(error,error_detail:sys):
 
     file_name = exc_tb.tb_frame.f_code.co_filename
 
-    file_name = exc_tb.tb_frame.f_code.co_filename
     error_msg = f"Error occured in python script name [{file_name}] line number [{exc_tb.tb_lineno}] error message [{str(error)}]"
 
     return error_msg
