@@ -8,3 +8,4 @@ dill
 # catboost
 # -e .
 Flask
+streamlit
